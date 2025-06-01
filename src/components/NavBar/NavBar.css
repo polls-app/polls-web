@@ -1,0 +1,54 @@
+.navbar-container {
+  padding: 0px 20px 20px 20px;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 12px;
+}
+
+.navbar-list li {
+  display: flex;
+  align-items: center;
+  color: #8B8B8B;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Eina 03 W03 SemiBold";
+  padding: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-list li:first-child {
+  background-color: #323232;
+  color: white;
+}
+
+.navbar-list li:first-child::before {
+  content: "🔥";
+  margin-right: 6px;
+}
+
+.navbar-list li:nth-child(2)::before {
+  content: "❤️";
+  margin-right: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.navbar-list li:nth-child(3)::before {
+  content: "⚠️";
+  margin-right: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.navbar-list li:hover {
+  background-color: #323232;
+  color: white;
+}

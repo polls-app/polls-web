@@ -1,0 +1,165 @@
+@import url(https://db.onlinewebfonts.com/c/7aa69c481b407f30ed286cad3d58dcf2?family=Eina+03+W03+SemiBold);
+@import url(https://db.onlinewebfonts.com/c/59c1782846fdca2c567f9e96af977c37?family=Phonk+Contrast+DEMO);
+
+.box {
+  padding: 12px;
+  height: 100%;
+  border: 1px solid white;
+  background-color: black;
+}
+
+.stack {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.column {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main-box {
+  background-color: #62B890;
+  height: 100%;
+  width: 84%;
+  border-radius: 25px 0 25px 25px;
+}
+
+.side-box {
+  background-color: #62B890;
+  height: 70%;
+  border-radius: 0 25px 25px 0;
+}
+
+.bottom-box {
+  background-color: #62B890;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.inner-box {
+  height: 100%;
+  width: 100%;
+  background-color: #141414;
+  border-radius: 25px 0 0 0;
+  padding-left: 10px;
+  padding-top: 10px;
+  height: 120px;
+}
+
+.share-container {
+  height: 100%;
+  width: 100%;
+  border: 3px solid #737675;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 6px;
+}
+
+.share-icon {
+  color: #737675;
+  font-size: 20px;
+}
+
+.share-count {
+  color: #737675;
+  font-size: 16px;
+}
+
+.card-header {
+  padding: 20px 0px 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-name-info {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  display: inline-block;
+  margin-left: 10px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.poll-quetion {
+  padding: 0 20px 20px 20px;
+  font-size: 23px;
+  font-family: "Phonk Contrast DEMO";
+  line-height: 35px;
+  color: white;
+  word-break: break-word;
+  overflow: hidden;
+}
+
+.poll-options {
+  padding: 0 20px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 30%;
+}
+
+.comment-btn {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-family: "Eina 03 W03 SemiBold";
+  border-radius: 50px;
+  padding: 15px 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.time {
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.share-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.share-count {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 13px;
+}
