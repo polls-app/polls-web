@@ -29,7 +29,7 @@ const PollCard: React.FC<PollCardProps> = ({ poll }) => {
             <div className="bottom-box" style={{ backgroundColor: poll.card.color }}>
                 <div className="inner-box">
                     <div className="share-container">
-                      <svg className="share-icon" viewBox="0 0 24 24" fill="none" stroke="#737675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <svg className="share-icon" viewBox="0 0 24 24" fill="none" stroke="#737675" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="18" cy="5" r="3"></circle>
                         <circle cx="6" cy="12" r="3"></circle>
                         <circle cx="18" cy="19" r="3"></circle>

@@ -5,11 +5,13 @@ import "./PollList.css";
 
 const PollList: React.FC<PollListProps> = ({ polls }) => {
   return (
-    <div className="polls-container">
-      {polls.map((poll) => (
-        <PollCard key={poll.id} poll={poll} />
-      ))}
-    </div>
+    <main className="app-container">
+      <div className="polls-container">
+        {polls.map((poll) => (
+          <PollCard key={poll.id} poll={poll} />
+        ))}
+      </div>
+    </main>
   );
 };
 

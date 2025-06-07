@@ -1,59 +1,62 @@
-import NavBar from "./components/NavBar/NavBar";
-import PollList from "./components/PollList/PollList.tsx";
-import { Poll } from "./components/PollCard/PollCard.ts";
-import Footer from "./components/Footer/Footer";
-import "./App.css";
-import Header from "./components/Header/Header";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import VerifyPage from './pages/VerifyPage';
+import RecommendationPage from './pages/RecommendationPage';
+import PasswordResetRequestPage from './pages/PasswordResetRequestPage';
+import PasswordResetPage from './pages/PasswordResetPage';
+import ProfilePage from './pages/ProfilePage';
 
-const polls: Poll[] = [
-  {
-    id: 1,
-    user: { name: "Selena Parkins", avatar: "https://i.pravatar.cc/50" },
-    card: { color: "#62B890", orientation: "column" },
-    timeAgo: "1 Hour Ago",
-    question: "Which is the best recipe for potato salad?",
-    options: [{ id: 1, text: "Write Comment" }],
-    shares: 22,
-  },
-  {
-    id: 2,
-    user: { name: "Faza Dzikrulloh", avatar: "https://i.pravatar.cc/50" },
-    card: { color: "#D06C51", orientation: "row" },
-    timeAgo: "30 Minutes Ago",
-    question: "Which OS you prefer the most?",
-    options: [
-      { id: 1, text: "Windows" },
-      { id: 2, text: "MacOS" },
-      { id: 3, text: "Linux" },
-      { id: 4, text: "Kolibri" },
-    ],
-    shares: 17,
-  },
-  {
-    id: 3,
-    user: { name: "Maddy Vivien", avatar: "https://i.pravatar.cc/50" },
-    card: { color: "#CDD04F", orientation: "column" },
-    timeAgo: "5 Minutes Ago",
-    question: "Are you dog or cat person?",
-    options: [
-      { id: 1, text: "Dog" },
-      { id: 2, text: "Cat" },
-    ],
-    shares: 43,
-  },
-];
+function App() {
+  const [token, setToken] = useState<string | null>(null);
+  const [emailVerified, setEmailVerified] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
-const App = () => {
+  console.log("token ", token)
+  console.log("email verified ", emailVerified)
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+      try {
+        const decoded = JSON.parse(atob(storedToken.split('.')[1]));
+        setEmailVerified(decoded?.email_verified === 'true');
+      } catch {
+        setEmailVerified(false);
+      }
+    }
+
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return null;
+  }
+
   return (
-    <div id="app">
-      <Header />
-      <NavBar />
-      <main className="app-container">
-        <PollList polls={polls} />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/verify" element={token && !emailVerified ? <VerifyPage /> : <Navigate to="/" />} />
+        <Route
+          path="/"
+          element={
+            token
+              ? emailVerified
+                ? <RecommendationPage />
+                : <Navigate to="/verify" />
+              : <Navigate to="/login" />
+          }
+        />
+        <Route path="/password-reset-request" element={<PasswordResetRequestPage />} />
+        <Route path="/password-reset" element={<PasswordResetPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
