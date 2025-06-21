@@ -1,56 +1,72 @@
 import NavBar from "../components/NavBar/NavBar";
 import PollList from "../components/PollList/PollList.tsx";
 import { Poll } from "../components/PollCard/PollCard.ts";
+import { useState, useEffect } from 'react';
 import Footer from "../components/Footer/Footer";
 import "../App.css";
 import Header from "../components/Header/Header";
 
-const polls: Poll[] = [
-    {
-      id: 1,
-      user: { name: "Selena Parkins", avatar: "https://i.pravatar.cc/50" },
-      card: { color: "#62B890", orientation: "column" },
-      timeAgo: "1 Hour Ago",
-      question: "Which is the best recipe for potato salad?",
-      options: [{ id: 1, text: "Write Comment" }],
-      shares: 22,
-    },
-    {
-      id: 2,
-      user: { name: "Faza Dzikrulloh", avatar: "https://i.pravatar.cc/50" },
-      card: { color: "#D06C51", orientation: "row" },
-      timeAgo: "30 Minutes Ago",
-      question: "Which OS you prefer the most?",
-      options: [
-        { id: 1, text: "Windows" },
-        { id: 2, text: "MacOS" },
-        { id: 3, text: "Linux" },
-        { id: 4, text: "Kolibri" },
-      ],
-      shares: 17,
-    },
-    {
-      id: 3,
-      user: { name: "Maddy Vivien", avatar: "https://i.pravatar.cc/50" },
-      card: { color: "#CDD04F", orientation: "column" },
-      timeAgo: "5 Minutes Ago",
-      question: "Are you dog or cat person?",
-      options: [
-        { id: 1, text: "Dog" },
-        { id: 2, text: "Cat" },
-      ],
-      shares: 43,
-    },
-  ];
+export default function RecommendationPage() {
+  const [polls, setPolls] = useState<Poll[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [sort, setSort] = useState("hot");
 
-export default function RegisterPage() {
-   
-    return (
-        <div id="app">
-          <Header name="polls" />
-          <NavBar />
-          <PollList polls={polls} />
-          <Footer />
-        </div>
-      );
+  useEffect(() => {
+    const fetchPolls = async () => {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+      const url = new URL("http://127.0.0.1:8000/api/v1/polls");
+      url.searchParams.append("sort", sort);
+    
+      try {
+        const res = await fetch(url.toString(), {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...(token && { Authorization: `Bearer ${token}` }),
+          },
+        });
+    
+        const raw = await res.json();
+        const items = Array.isArray(raw) ? raw : raw.data;
+    
+        const newPolls: Poll[] = items.map((poll: any) => ({
+          id: poll.id,
+          user: {
+            name: poll.author_full_name,
+            avatar: "https://i.pravatar.cc/50",
+          },
+          card: {
+            color: "#62B890",
+            orientation: "column",
+          },
+          timeAgo: new Date(poll.created_at).toLocaleString(),
+          question: poll.title,
+          options: poll.options.map((opt: any) => ({
+            id: opt.id,
+            text: opt.content,
+          })),
+          shares: poll.number_of_shares,
+        }));
+    
+        setPolls(newPolls);
+      } catch (error) {
+        console.error("Failed to fetch polls:", error);
+      } finally {
+        setLoading(false);
+      }
+    };    
+
+    fetchPolls();
+  }, [sort]);
+
+  return (
+    <div id="app">
+      <Header name="polls" />
+      <NavBar selected={sort} onSelect={setSort} />
+      {loading ? <p style={{ textAlign: "center" }}>Loading...</p> : <PollList polls={polls} />}
+      <Footer />
+    </div>
+  );
 }
+  

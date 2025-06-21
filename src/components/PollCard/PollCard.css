@@ -34,12 +34,12 @@
 .side-box {
   background-color: #62B890;
   height: 70%;
+  flex-grow: 1;
   border-radius: 0 25px 25px 0;
 }
 
 .bottom-box {
   background-color: #62B890;
-  flex-grow: 1;
   cursor: pointer;
 }
 

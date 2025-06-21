@@ -24,11 +24,6 @@
   transition: background-color 0.2s ease;
 }
 
-.navbar-list li:first-child {
-  background-color: #323232;
-  color: white;
-}
-
 .navbar-list li:first-child::before {
   content: "🔥";
   margin-right: 6px;
@@ -51,4 +46,17 @@
 .navbar-list li:hover {
   background-color: #323232;
   color: white;
+}
+
+.navbar-list li.active {
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+}
+
+.active::before {
+  content: '';
+  width: 20px !important;
+  height: 20px !important;
+  background: transparent !important;
 }

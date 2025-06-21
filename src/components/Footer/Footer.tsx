@@ -13,7 +13,9 @@ const Footer = () => {
           <img src="../../src/assets/search_grey_icon.png" alt="Search" className="footer-icon" />
         </li>
         <li>
-          <img src="../../src/assets/plus-button_icon_grey.png" alt="Add" className="footer-icon" />
+          <a href="/create">
+            <img src="../../src/assets/plus-button_icon_grey.png" alt="Add" className="footer-icon" />
+          </a>
         </li>
         <li>
           <img src="../../src/assets/copy_icon_grey.png" alt="Copy" className="footer-icon" />

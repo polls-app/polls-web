@@ -7,6 +7,7 @@ import RecommendationPage from './pages/RecommendationPage';
 import PasswordResetRequestPage from './pages/PasswordResetRequestPage';
 import PasswordResetPage from './pages/PasswordResetPage';
 import ProfilePage from './pages/ProfilePage';
+import CreatePollPage from './pages/CreatePollPage';
 
 function App() {
   const [token, setToken] = useState<string | null>(null);
@@ -53,6 +54,7 @@ function App() {
         />
         <Route path="/password-reset-request" element={<PasswordResetRequestPage />} />
         <Route path="/password-reset" element={<PasswordResetPage />} />
+        <Route path="/create" element={<CreatePollPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>

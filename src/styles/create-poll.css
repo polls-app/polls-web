@@ -1,0 +1,251 @@
+@import url(https://db.onlinewebfonts.com/c/59c1782846fdca2c567f9e96af977c37?family=Phonk+Contrast+DEMO);
+
+.create-poll-container {
+    height: 100%;
+    border-radius: 50px;
+}
+
+  .poll-content {
+    padding: 0 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Poll Type Toggle */
+  .poll-type-toggle {
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    padding: 4px;
+    margin: 24px 0;
+  }
+  
+  .toggle-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 26px;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-btn.active {
+    background: #000;
+    color: white;
+  }
+
+  .toggle-btn.active::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+  }
+  
+  .comment-icon {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+  
+  /* Question Section */
+  .question-section {
+    margin: 24px 0;
+  }
+  
+  .question-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Phonk Contrast DEMO";
+    font-size: 22px;
+    margin-top: 20px;
+    resize: none;
+    overflow: hidden;
+  }
+  
+  .question-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "Phonk Contrast DEMO";
+  }
+  
+  .question-input:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0;
+  }
+  
+  .action-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .action-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+  
+  /* Options Section */
+  .options-section {
+    margin: 32px 0;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    background: #000;
+    border-radius: 50px;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  
+  .option-plus {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .option-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .option-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .option-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .option-action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    padding: 4px;
+  }
+  
+  .option-action-btn:hover:not(:disabled) {
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+  }
+  
+  .option-action-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  .add-option-btn {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    gap: 12px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+  }
+  
+  .add-option-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-1px);
+  }
+  
+  /* Post Button */
+  .post-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+    transition: all 0.3s ease;
+  }
+  
+  .post-btn.enabled {
+    background: white;
+    color: black;
+  }
+  
+  .post-btn.enabled:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .post-btn.enabled:active {
+    transform: scale(0.95);
+  }
+  
+  .post-btn.disabled {
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.5);
+    cursor: not-allowed;
+  }
+  
+  .heart-icon {
+    font-size: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .poll-content {
+      padding: 0 12px;
+      margin: 0 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .action-buttons {
+      gap: 8px;
+    }
+    
+    .action-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+    }
+  }
